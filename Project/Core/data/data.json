@@ -1,0 +1,18 @@
+{
+  "url": {
+    "home_page": "http://www.automationpractice.pl/index.php"
+  },
+  "data":{
+    "email": "hello12@gmail.com"
+  },
+  "credentials": {
+    "name": "Andjela",
+    "last_name": "Jeftovic",
+    "password": "password123"
+  },
+  "verification_message": {
+    "registartion_message": "Your account has been created."
+  }
+
+}
+
