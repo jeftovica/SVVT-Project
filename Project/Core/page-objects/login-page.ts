@@ -9,15 +9,20 @@ const testData = JSON.parse(readFileSync(dataFilePath, "utf8"));
 
 
 export class LoginPage extends BasePage {
-    private email = By.id('email_create');
-    private submit_button = By.id('SubmitCreate');
+    private email = By.id('login-email');
+    private password = By.id('login-pwd');
+    private login_button = By.id('login-submit');
     constructor(driver: WebDriver) {
         super(driver);
     }
     async provideEmail(){
         await this.fillInputField(this.email, testData.data.email);
     }
-    async clickSubmitbutton(){
-        await this.findElementAndClick(this.submit_button);
+
+    async providePassword(){
+        await this.fillInputField(this.password, testData.data.password);
+    }
+    async clickLoginButton(){
+        await this.findElementAndClick(this.login_button);
     }
 }

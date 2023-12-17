@@ -3,17 +3,18 @@ import BasePage from "./base-page";
 
 
 export class HomePage extends BasePage {
-    private logo = By.className("logo img-responsive");
-    private login_button = By.className('login');
+    private login_button = By.className('header-user');
+    private close_modal = By.className('newuser-close');
 
 
     constructor(driver: WebDriver) {
         super(driver);
     }
-    async navigateToHomePage() {
-        await this.driver.findElement(this.logo).click();
-    }
     async clickSignInButton(){
         await this.findElementAndClick(this.login_button);
+    }
+
+    async clickCloseModalButton(){
+        await this.findElementAndClick(this.close_modal);
     }
 }

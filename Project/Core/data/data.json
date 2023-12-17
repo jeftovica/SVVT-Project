@@ -1,17 +1,22 @@
 {
   "url": {
-    "home_page": "http://www.automationpractice.pl/index.php"
+    "home_page": "https://www.banggood.com/"
   },
   "data":{
-    "email": "hello12@gmail.com"
+    "email": "andela.jeftovic@stu.ibu.edu.ba",
+    "password": "angela01180"
   },
   "credentials": {
     "name": "Andjela",
-    "last_name": "Jeftovic",
-    "password": "password123"
+    "last_name": "Jeftovic"
+
   },
   "verification_message": {
     "registartion_message": "Your account has been created."
+  },
+
+  "registered_home_page": {
+    "search_term": "Clocks"
   }
 
 }
