@@ -4,7 +4,8 @@
   },
   "data":{
     "email": "andela.jeftovic@stu.ibu.edu.ba",
-    "password": "angela01180"
+    "password": "angela01180",
+    "new_psd": "angela"
   },
   "credentials": {
     "name": "Andjela",
@@ -17,6 +18,15 @@
 
   "registered_home_page": {
     "search_term": "Clocks"
+  },
+
+  "search_result_page": {
+    "min_price_term": 15,
+    "max_price_term": 90
+  },
+
+  "chosen_item_page": {
+    "QA_text": "Will it be available in some other color?"
   }
 
 }

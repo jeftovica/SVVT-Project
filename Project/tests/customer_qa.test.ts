@@ -1,4 +1,3 @@
-
 import { Builder, By, WebDriver } from "selenium-webdriver";
 import { createDriver, quitDriver } from "../Core/config/driver-setup";
 import { readFileSync } from "fs";
@@ -6,6 +5,9 @@ import * as path from "path";
 import {HomePage} from "../Core/page-objects/home-page";
 import {LoginPage} from "../Core/page-objects/login-page";
 import {RegisteredHomePage} from "../Core/page-objects/registered-home-page";
+import {ChosenItemPage} from "../Core/page-objects/chosen-item-page";
+import {ProfilePage} from "../Core/page-objects/profile-page";
+import {SearchResultPage} from "../Core/page-objects/search-result-page";
 
 
 
@@ -17,6 +19,9 @@ let driver: WebDriver;
 let homePage: HomePage;
 let loginPage: LoginPage;
 let registeredHomePage: RegisteredHomePage;
+let chosenItemPage: ChosenItemPage;
+let profilePage: ProfilePage;
+let searchResultPage: SearchResultPage;
 
 
 
@@ -25,20 +30,29 @@ beforeAll(async () => {
     homePage = new HomePage(driver);
     loginPage = new LoginPage(driver);
     registeredHomePage = new RegisteredHomePage(driver);
+    chosenItemPage = new ChosenItemPage(driver);
+    profilePage = new ProfilePage(driver);
+    searchResultPage = new SearchResultPage(driver);
 
 },10000);
 
 
-test("search", async () => {
+test("ask questions", async () => {
     await homePage.clickCloseModalButton();
     await homePage.clickSignInButton();
     await loginPage.provideEmail();
     await loginPage.providePassword();
     await loginPage.clickLoginButton();
     await driver.sleep(20000); // ToDo: Delete
-    await registeredHomePage.enterSearchField();
-    await registeredHomePage.clickSearchButton();
-    await registeredHomePage.signOut();
+    await driver.get(testData.url.home_page);
+    //await profilePage.clickLogoButton();
+    await registeredHomePage.clickToysCategory();
+    await searchResultPage.clickOnToy();
+    await chosenItemPage.findQAsection();
+    await chosenItemPage.clickSeeAllQA();
+    await chosenItemPage.clickQAbutton();
+    await chosenItemPage.enterQAfield();
+    await chosenItemPage.clickQAsubmit();
 
 
 
