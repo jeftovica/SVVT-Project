@@ -14,6 +14,8 @@ export class ChosenItemPage extends BasePage{
     private QA_field = By.xpath('//div[@class = "modal modal-qa-pop"]//textarea[@placeholder= "Enter your question"]');
     private QA_submit = By.xpath('//div[@class = "btn"]//a[@class = "qa-submit"]');
 
+    private buy_now = By.xpath('//div[contains(@class, "product-action")]//a[contains(@class, "buy-now-btn")]');
+
     constructor(driver: WebDriver) {
         super(driver);
     }
@@ -35,5 +37,9 @@ export class ChosenItemPage extends BasePage{
 
     async clickQAsubmit(){
         await this.findElementAndClick(this.QA_submit)
+    }
+
+    async clickBuyNow(){
+        await this.findElementAndClick(this.buy_now);
     }
 }
