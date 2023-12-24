@@ -1,4 +1,4 @@
-import { By, WebDriver, until } from "selenium-webdriver";
+import {WebDriver, until, By} from "selenium-webdriver";
 import BasePage from "./base-page";
 import { readFileSync } from "fs";
 import * as path from "path";
@@ -9,32 +9,28 @@ const testData = JSON.parse(readFileSync(dataFilePath, "utf8"));
 
 
 export class RegistrationPage extends BasePage {
-    private title = By.id("id_gender2");
-    private name = By.id('customer_firstname');
-    private last_name = By.id('customer_lastname');
-    private password = By.id('passwd');
-    private create_acc = By.id('submitAccount');
-    private verificaton_msg = By.className('alert alert-success');
+    private email = By.id('join-email')
+    private password = By.id('join-pwd');
+    private login_button = By.id('join-submit');
+    private agree_terms_checkbox = By.xpath('//li[contains(@class,"agree1")]//i');
+    private agree_privacy_checkbox = By.xpath('//li[contains(@class,"agree2")]//i');
     constructor(driver: WebDriver) {
         super(driver);
     }
-    async clickPreferedTitle() {
-        await this.findElementAndClick(this.title);
+    async provideEmail(){
+        await this.fillInputField(this.email, testData.registration.email);
     }
-    async enterName(){
-        await this.fillInputField(this.name, testData.credentials.name);
+
+    async providePassword(){
+        await this.fillInputField(this.password, testData.registration.password);
     }
-    async enterLastName(){
-        await this.fillInputField(this.last_name, testData.credentials.last_name);
+    async clickRegisterButton(){
+        await this.findElementAndClick(this.login_button);
     }
-    async enterPassword(){
-        await this.fillInputField(this.password, testData.credentials.password);
+    async clickAgreeToTermsOfUse(){
+        await this.findElementAndClick(this.agree_terms_checkbox)
     }
-    async clickCreateAccountButton(){
-        await this.findElementAndClick(this.create_acc);
-    }
-    async verifyAccountCreation(){
-        await this.waitForElement(this.verificaton_msg, 10000);
-        await this.checkMatchingElements(this.verificaton_msg, testData.verification_message.registartion_message)
+    async clickAgreeToPrivacyPolicyOfUse(){
+        await this.findElementAndClick(this.agree_privacy_checkbox)
     }
 }

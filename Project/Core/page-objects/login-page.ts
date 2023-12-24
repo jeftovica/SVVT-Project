@@ -12,6 +12,7 @@ export class LoginPage extends BasePage {
     private email = By.id('login-email');
     private password = By.id('login-pwd');
     private login_button = By.id('login-submit');
+    private register_button = By.xpath('//span[contains(@class,"register-btn")]');
     constructor(driver: WebDriver) {
         super(driver);
     }
@@ -25,4 +26,8 @@ export class LoginPage extends BasePage {
     async clickLoginButton(){
         await this.findElementAndClick(this.login_button);
     }
+    async switchToRegistration(){
+        await this.findElementAndClick(this.register_button);
+    }
+
 }

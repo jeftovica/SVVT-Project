@@ -1,4 +1,3 @@
-
 import {readFileSync} from "fs";
 import BasePage from "./base-page";
 import {By, WebDriver} from "selenium-webdriver";
@@ -71,12 +70,15 @@ export class CheckoutPage extends BasePage{
     }
 
     async clickPlaceOrder(){
+        await this.waitForElement(By.xpath('//div[contains(@class,"address-wrap")]//a[contains(@class,"delete-btn")]'),10000);
         await this.findElementAndClick(this.place_order);
     }
 
-   async clickPaymentMethod(){
+    async clickPaymentMethod(){
+        const iframe = this.driver.findElement(By.xpath('//iframe[contains(@class,"js-pci-iframe")]'));
         await this.findElementAndClick(this.payment_method);
-   }
+        await this.driver.switchTo().frame(iframe);
+    }
 
     async inputCardNumber(){
         await this.fillInputField(this.card_number, testData.payment_mtd.card_nmb);
@@ -91,6 +93,7 @@ export class CheckoutPage extends BasePage{
     }
 
     async clickPayNow(){
+        await this.driver.switchTo().defaultContent();
         await this.findElementAndClick(this.pay_now);
     }
 

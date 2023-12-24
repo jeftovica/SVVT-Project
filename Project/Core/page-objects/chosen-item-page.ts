@@ -16,6 +16,11 @@ export class ChosenItemPage extends BasePage{
 
     private buy_now = By.xpath('//div[contains(@class, "product-action")]//a[contains(@class, "buy-now-btn")]');
 
+
+    private QA_button_inplace=By.xpath('//div[contains(@class, "qa-lead-text")]//a[contains(@class, "qa-add-btn")]');
+    private QA_field_inplace=By.xpath('//div[contains(@class, "modal-qa-pop")]//div[contains(@class, "textarea-text")]//textarea');
+    private QA_submit_inplace = By.xpath('//div[@class = "modal-qa-pop"]//a[@class = "qa-submit"]');
+
     constructor(driver: WebDriver) {
         super(driver);
     }
@@ -37,6 +42,17 @@ export class ChosenItemPage extends BasePage{
 
     async clickQAsubmit(){
         await this.findElementAndClick(this.QA_submit)
+    }
+    async clickQAbuttonInplace(){
+        await this.findElementAndClick(this.QA_button_inplace);
+    }
+
+    async enterQAfieldInplace(){
+        await this.fillInputField(this.QA_field_inplace, testData.chosen_item_page.QA_text);
+    }
+
+    async clickQAsubmitInplace(){
+        await this.findElementAndClick(this.QA_submit_inplace)
     }
 
     async clickBuyNow(){
