@@ -44,26 +44,8 @@ test("ask questions", async () => {
     await driver.get(testData.url.home_page);
     await registeredHomePage.clickToysCategory();
     await searchResultPage.clickOnToy();
-    await driver.actions()
-        .scroll(10, 10, 0, 1000)
-        .perform()
-    await chosenItemPage.findQAsection();
-    try {
-        await chosenItemPage.clickSeeAllQA();
-
-        driver.SwitchTo().Window(driver.WindowHandles[1]);
-
-        await chosenItemPage.clickQAbutton();
-        await chosenItemPage.enterQAfield();
-        await chosenItemPage.clickQAsubmit();
-    }
-    catch (e)
-    {
-        await chosenItemPage.clickQAbuttonInplace();
-        await chosenItemPage.enterQAfieldInplace();
-        await chosenItemPage.clickQAsubmitInplace();
-    }
-
+    await chosenItemPage.clickWishListButton();
+    await chosenItemPage.clickViewList();
 
 
 },120000);

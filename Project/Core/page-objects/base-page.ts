@@ -43,4 +43,9 @@ export default class BasePage {
     async fillInputField(inputField: By, text: string) {
         await (await this.findElement(inputField)).sendKeys(text);
     }
+
+    async checkURL(urlString){
+        const currentUrl = this.driver.getCurrentUrl();
+        expect(currentUrl).toMatch(urlString);
+    }
 }

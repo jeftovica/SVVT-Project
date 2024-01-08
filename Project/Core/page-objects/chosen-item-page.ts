@@ -16,10 +16,17 @@ export class ChosenItemPage extends BasePage{
 
     private buy_now = By.xpath('//div[contains(@class, "product-action")]//a[contains(@class, "buy-now-btn")]');
 
-
     private QA_button_inplace=By.xpath('//div[contains(@class, "qa-lead-text")]//a[contains(@class, "qa-add-btn")]');
     private QA_field_inplace=By.xpath('//div[contains(@class, "modal-qa-pop")]//div[contains(@class, "textarea-text")]//textarea');
-    private QA_submit_inplace = By.xpath('//div[@class = "modal-qa-pop"]//a[@class = "qa-submit"]');
+    private QA_submit_inplace = By.xpath('//div[contains(@class, "modal-qa-pop")]//a[contains(@class, "qa-submit")]');
+
+    private wish_list_button = By.xpath ('//div[contains(@class, "wish-btn")]');
+    private view_list = By.xpath('//div[contains(@class, "modal-cnt")]//a[contains(@class, "view_wish")]');
+
+    private price = By.xpath('//div[contains(@class, "right-price")]');
+    private input_email = By.xpath('//input[contains(@class, "alert-email")]');
+    private subscribe = By.xpath('//div[contains(@class, "btn-inner")]//a[contains(@class, "alert-submit")]');
+
 
     constructor(driver: WebDriver) {
         super(driver);
@@ -57,5 +64,25 @@ export class ChosenItemPage extends BasePage{
 
     async clickBuyNow(){
         await this.findElementAndClick(this.buy_now);
+    }
+
+    async clickWishListButton(){
+        await this.findElementAndClick(this.wish_list_button);
+    }
+
+    async clickViewList(){
+        await this.findElementAndClick(this.view_list);
+    }
+
+    async clickPrice(){
+        await this.findElementAndClick(this.price);
+    }
+
+    async inputEmail(){
+        await this.fillInputField(this.input_email, testData.data.email);
+    }
+
+    async clickSubscribe(){
+        await this.findElementAndClick(this.subscribe);
     }
 }

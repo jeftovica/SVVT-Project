@@ -43,7 +43,7 @@ test("buy test", async () => {
     await loginPage.provideEmail();
     await loginPage.providePassword();
     await loginPage.clickLoginButton();
-    await driver.sleep(5000); // ToDo: Delete
+    await driver.sleep(20000); // ToDo: Delete
     await driver.get(testData.url.home_page);
     await registeredHomePage.clickToysCategory();
     await searchResultPage.clickOnToy();
