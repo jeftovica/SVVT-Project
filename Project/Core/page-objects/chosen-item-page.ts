@@ -11,8 +11,8 @@ export class ChosenItemPage extends BasePage{
     private see_all_QA = By.xpath('//div[contains(@class, "qa-see-all")]//a[@dpid = "down_seeallQA_button_180411|product|18101211661"]');
     private QA_button = By.xpath('//div[contains(@class, "qa-lead-btn")]//a[contains(@class, "qa-lead-new")]');
 
-    private QA_field = By.xpath('//div[@class = "modal modal-qa-pop"]//textarea[@placeholder= "Enter your question"]');
-    private QA_submit = By.xpath('//div[@class = "btn"]//a[@class = "qa-submit"]');
+    private QA_field = By.xpath('//textarea[@id= "question_content"]');
+    private QA_submit = By.xpath('//input[@id = "askSubmit"]');
 
     private buy_now = By.xpath('//div[contains(@class, "product-action")]//a[contains(@class, "buy-now-btn")]');
 
@@ -37,7 +37,8 @@ export class ChosenItemPage extends BasePage{
     }
 
     async clickSeeAllQA(){
-        await this.findElementAndClick(this.see_all_QA);
+        const url = await this.findElement(this.see_all_QA);
+        await this.driver.get(url.getAttribute("href"));
     }
     async clickQAbutton(){
         await this.findElementAndClick(this.QA_button);

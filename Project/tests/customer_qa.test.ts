@@ -51,8 +51,6 @@ test("ask questions", async () => {
     try {
         await chosenItemPage.clickSeeAllQA();
 
-        driver.SwitchTo().Window(driver.WindowHandles[1]);
-
         await chosenItemPage.clickQAbutton();
         await chosenItemPage.enterQAfield();
         await chosenItemPage.clickQAsubmit();
